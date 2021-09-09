@@ -12,7 +12,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
+
 import NotFoundScreen from '../screens/NotFoundScreen';
 import DepositoScreen from '../screens/DepositoScreen'
 import Configuracoes from '../screens/Configuracoes';
@@ -41,7 +41,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -68,7 +68,7 @@ function BottomTabNavigator() {
         options={({ navigation }) => ({
           headerTitle: 'Câmbio Monetário',
           title: 'Depósitos',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           //headerRight: () => (
           //  <Pressable
           //    onPress={() => navigation.navigate('Modal')}
@@ -90,7 +90,7 @@ function BottomTabNavigator() {
         component={Configuracoes}
         options={{
           title: 'Configurações',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="money" color={color} />,
         }}
       />
     </BottomTab.Navigator>
