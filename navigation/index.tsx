@@ -14,8 +14,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import DepositoScreen from '../screens/DepositoScreen'
+import Configuracoes from '../screens/Configuracoes';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -51,44 +51,45 @@ function RootNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Depositos"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+        name="Depositos"
+        component={DepositoScreen}
+        options={({ navigation }) => ({
+          headerTitle: 'Câmbio Monetário',
+          title: 'Depósitos',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          //headerRight: () => (
+          //  <Pressable
+          //    onPress={() => navigation.navigate('Modal')}
+          //    style={({ pressed }) => ({
+          //      opacity: pressed ? 0.5 : 1,
+          //    })}>
+          //    <FontAwesome
+          //      name="info-circle"
+          //      size={25}
+          //      color={Colors[colorScheme].text}
+          //      style={{ marginRight: 15 }}
+          //    />
+          //  </Pressable>
+          //),
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Configuracoes"
+        component={Configuracoes}
         options={{
-          title: 'Tab Two',
+          title: 'Configurações',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

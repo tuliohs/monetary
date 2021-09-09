@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from "../actionTypes"
+import { INCREMENT, DECREMENT, DEPOSITO } from "../actionTypes"
 
 export const incrementCounter = (value) => ({
     type: INCREMENT,
@@ -6,5 +6,9 @@ export const incrementCounter = (value) => ({
 })
 export const decrementCounter = (value) => ({
     type: DECREMENT,
+    payload: value
+})
+export const changeDepositoValue = (value) => ({
+    type: DEPOSITO,
     payload: value
 })
