@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity, TextInput } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { cambio } from '../constants/Config';
 import { changeDepositoValue, decrementCounter, incrementCounter } from '../redux/actions';
 
 const DepositoScreen = ({ navigation }) => {
@@ -12,10 +13,20 @@ const DepositoScreen = ({ navigation }) => {
   const HandlerChangeDeposito = (val) => dispatch(changeDepositoValue({ depositoValue: val }))
 
 
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.item}>
+        <Text >{item.moeda + "   " +
+          item.cotacao + "   " +
+          item.iof + "   " +
+          item.spread} </Text>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
       <View>
-
         <Text style={{
           fontWeight: "bold",
           fontSize: 40,
@@ -23,7 +34,7 @@ const DepositoScreen = ({ navigation }) => {
           textAlign: "center",
           marginBottom: 10
         }}>
-          Depositos
+          Deposito
         </Text>
         <View style={{
           //backgroundColor: "#121214",
@@ -41,6 +52,12 @@ const DepositoScreen = ({ navigation }) => {
           <View>
             <Text style={{ color: "#fff", fontSize: 10 }}>{depositoValue}</Text>
           </View>
+          <FlatList
+            data={cambio}
+            renderItem={renderItem}
+            horizontal={false}
+            keyExtractor={(item) => item.moeda}
+          />
         </View>
       </View>
     </View >
@@ -68,6 +85,10 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 });
-
 export default DepositoScreen
