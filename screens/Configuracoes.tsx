@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { Text, View } from '../components/Themed';
 import { cambio, TCambio } from '../constants/Config';
 
-export default function TabTwoScreen() {
+export default function Configuracoes() {
 
   const renderItem = ({ item }) => {
     return (

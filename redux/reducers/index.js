@@ -12,7 +12,7 @@ export const countReducer = (state = { value: 8 }, action) => {
     }
 }
 
-export const depositoReducer = (state = { depositoValue: 10 }, action) => {
+export const depositoReducer = (state = { depositoValue: null }, action) => {
     switch (action.type) {
         case DEPOSITO:
             return { depositoValue: action.payload?.depositoValue }
