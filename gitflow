@@ -1,0 +1,8 @@
+git branch develop
+git push -u origin develop
+
+git checkout develop
+git checkout -b feature_redux
+
+git checkout develop
+git merge feature_redux
